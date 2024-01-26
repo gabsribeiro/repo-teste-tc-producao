@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Informe a tag para a imagem."
+else
+  docker build -t pedrovcorsino/tech_challenge:"$1" . && docker push pedrovcorsino/tech_challenge:$1  
+fi
+
+
