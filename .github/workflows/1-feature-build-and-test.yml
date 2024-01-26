@@ -25,12 +25,3 @@ jobs:
         run: |
           yarn build
           yarn test
-
-      - name: Criando PR para develop
-        uses: peter-evans/create-pull-request@v5
-        with:
-          title: PR automático para a develop
-          branch: ${{ github.ref }}
-          base: develop
-          commit-message: "PR automático para a develop"
-          labels: automate-pr

@@ -28,12 +28,3 @@ jobs:
         run: |
           yarn build
           yarn test
-
-      - name: Criando PR para main
-        uses: peter-evans/create-pull-request@v5
-        with:
-          title: PR automático da branch develop para main
-          branch: develop
-          base: main
-          commit-message: "PR automático da branch develop para main"
-          labels: automate-pr
