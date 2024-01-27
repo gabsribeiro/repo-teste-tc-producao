@@ -24,7 +24,7 @@ jobs:
       - name: Instalando dependências
         run: yarn install
 
-      - name: Build e testes
+      - name: Build e teste
         run: |
           yarn build
           yarn test
