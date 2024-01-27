@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Build and push Docker image to DockerHub
-docker build -t tc-producao .
-docker tag tc-producao gabrielaontour/tc-producao:v1.0
-docker push gabrielaontour/tc-producao:v1.0
+docker build -t tech-challenge-producao .
+docker tag tech-challenge-producao gabrielaontour/tech-challenge-producao:v1.0
+docker push gabrielaontour/tech-challenge-producao:v1.0
 
 # Deploy infrastructure using Terraform
 cd infra

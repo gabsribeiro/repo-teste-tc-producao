@@ -44,7 +44,7 @@ jobs:
           aws-region: 'us-east-1'
 
       - name: Deploy na AWS
-        run: ./deploy.sh
+        run: deploy.sh
 
       - name: Deploy realizado com sucesso
         if: success()
