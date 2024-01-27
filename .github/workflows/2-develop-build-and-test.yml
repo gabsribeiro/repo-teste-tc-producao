@@ -33,8 +33,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy na AWS
 
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-
     needs: build_and_test
 
     steps:
