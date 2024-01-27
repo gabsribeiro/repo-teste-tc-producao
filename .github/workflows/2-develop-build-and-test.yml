@@ -45,7 +45,7 @@ jobs:
 
       - name: Deploy na AWS
         shell: bash
-        run: chmod +x ./deploy.sh
+        run: ./deploy.sh
 
       - name: Deploy realizado com sucesso
         if: success()
