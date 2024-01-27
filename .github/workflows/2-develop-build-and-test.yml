@@ -46,6 +46,7 @@ jobs:
           pwd
           whoami
           ls -al
+          chmod +x ./deploy.sh
           ./deploy.sh
 
       - name: Deploy realizado com sucesso
