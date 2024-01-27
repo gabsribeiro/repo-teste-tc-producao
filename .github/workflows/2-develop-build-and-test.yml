@@ -42,8 +42,11 @@ jobs:
         run: ls
 
       - name: Deploy na AWS
-        shell: bash
-        run: deploy.sh
+        run: |
+          pwd
+          whoami
+          ls -al
+          ./deploy.sh
 
       - name: Deploy realizado com sucesso
         if: success()
