@@ -45,7 +45,7 @@ jobs:
 
       - name: Deploy na AWS
         shell: bash
-        run: git update-index --chmod=+x ./deploy.sh
+        run: chmod +x ./deploy.sh
 
       - name: Deploy realizado com sucesso
         if: success()
