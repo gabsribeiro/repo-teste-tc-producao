@@ -11,7 +11,9 @@ on:
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./
     steps:
       - name: Checkout código
         uses: actions/checkout@v2
@@ -29,15 +31,6 @@ jobs:
           yarn build
           yarn test
 
-  deploy:
-    runs-on: ubuntu-latest
-    name: Deploy na AWS
-
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-
-    needs: build_and_test
-
-    steps:
       - name: Configurando AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -45,8 +38,16 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: 'us-east-1'
 
+      - name: Encotrar diretório
+        run: ls
+
       - name: Deploy na AWS
-        run: ./deploy.sh
+        run: |
+          pwd
+          whoami
+          ls -al
+          chmod +x ./deploy.sh
+          ./deploy.sh
 
       - name: Deploy realizado com sucesso
         if: success()
