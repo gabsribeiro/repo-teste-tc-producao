@@ -27,28 +27,17 @@ jobs:
           yarn build
           yarn test
 
-  deploy:
-    runs-on: ubuntu-latest
-    name: Deploy na AWS
-
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-
-    needs: build
-
-    steps:
-      - name: Configurando AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: 'us-east-1'
+          args: >
+            -Dsonar.organization=gabsribeiro
+            -Dsonar.projectKey=repo-teste-tc-producao
 
-      - name: Deploy na AWS
-        run: ./deploy.sh
-
-      - name: Deploy realizado com sucesso
-        if: success()
-        run: echo 'Deployment successful!'
-
-      - name: Encerrar workflow se as condições não forem atendidas
-        run: exit 0
+          
+          
+          
+          
